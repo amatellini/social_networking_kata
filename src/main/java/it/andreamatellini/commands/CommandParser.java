@@ -1,24 +1,36 @@
 package it.andreamatellini.commands;
 
-import java.util.Optional;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommandParser {
 
-    private static String COMMAND = "some regular expression to be defined";
+    private static String FOLLOW_COMMAND = "\\s*follows\\s.*";
+    private static String WALL_COMMAND = "\\s*wall";
     private static String EXIT_COMMAND = "exit";
 
+    private static HashMap<String, String> commandMatchers = new HashMap<>();
+
+    static {
+        //TODO manca il comando per i post
+        commandMatchers.put(EXIT_COMMAND, Command.EXIT);
+        commandMatchers.put(WALL_COMMAND, Command.WALL);
+        commandMatchers.put(FOLLOW_COMMAND, Command.FOLLOW);
+    }
+
     public static Optional<Command> parse(String command) {
-        if (command.trim().equals(EXIT_COMMAND))
-            return Optional.of(new ExitCommand());
 
-        Pattern pattern = Pattern.compile(COMMAND);
-        Matcher matcher = pattern.matcher(command);
-        matcher.matches();
+        for(String key : commandMatchers.keySet()){
+            Pattern pattern = Pattern.compile(key);
+            Matcher matcher = pattern.matcher(command);
+            if(matcher.matches()) {
+                String type = commandMatchers.get(key);
+                return Optional.of(CommandFactory.getCommand(type));
+            }
+        }
 
-        //TODO creare una o più regular expression al posto di COMMAND
-        //TODO implementare gli altri comandi
+        //TODO implementare i comandi
 
         return Optional.empty();
     }
