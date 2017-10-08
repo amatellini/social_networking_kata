@@ -26,9 +26,9 @@ public class PostCommandTest {
     }
 
     @Test
-    public void execute() throws Exception {
-        Command followCommand = new PostCommand(USER, MESSAGE, messageRepository);
-        followCommand.execute();
+    public void executeShouldAddTheMassageToMyMessageList() throws Exception {
+        Command postCommand = new PostCommand(USER, MESSAGE, messageRepository);
+        postCommand.execute();
 
         List<Message> messages = messageRepository.getMessages(USER);
         assertThat(messages, is(notNullValue()));
