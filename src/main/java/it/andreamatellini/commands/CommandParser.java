@@ -22,19 +22,15 @@ public class CommandParser {
         commandMatchers.put(READ_COMMAND, CommandType.READ);
     }
 
-    public static Optional<Command> parse(String command) {
+    public static String parse(String command) {
 
         for(String key : commandMatchers.keySet()){
             Pattern pattern = Pattern.compile(key);
             Matcher matcher = pattern.matcher(command);
             if(matcher.matches()) {
-                String type = commandMatchers.get(key);
-                return Optional.of(CommandFactory.getCommand(type, command));
+                return commandMatchers.get(key);
             }
         }
-
-        //TODO implementare i comandi
-
-        return Optional.empty();
+        return "";
     }
 }

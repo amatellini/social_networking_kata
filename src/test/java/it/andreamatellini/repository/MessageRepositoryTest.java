@@ -1,6 +1,6 @@
 package it.andreamatellini.repository;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import it.andreamatellini.message.Message;
 
@@ -17,7 +17,7 @@ public class MessageRepositoryTest {
 
     private static final String USER = "user";
     private static final String MESSAGE_TEXT = "a message";
-    private static final Date DATE = new Date();
+    private static final LocalDateTime DATE = LocalDateTime.now();
     private static final Message MESSAGE = new Message(USER, DATE, MESSAGE_TEXT);
 
     private MessageRepository messageRepository;

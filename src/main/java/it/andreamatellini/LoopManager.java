@@ -1,7 +1,10 @@
 package it.andreamatellini;
 
 import it.andreamatellini.commands.Command;
+import it.andreamatellini.commands.CommandFactory;
 import it.andreamatellini.commands.CommandParser;
+import it.andreamatellini.repository.ConnectionRepository;
+import it.andreamatellini.repository.MessageRepository;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -19,12 +22,16 @@ public class LoopManager {
     }
 
     public void run() {
+
+        MessageRepository messageRepository = new MessageRepository();
+        ConnectionRepository connectionRepository = new ConnectionRepository();
+
         try {
             output.print("> ");
             while(true){
-                String line = bufferedReader.readLine();
-
-                Optional<Command> command = CommandParser.parse(line);
+                String commandLine = bufferedReader.readLine();
+                String commandType = CommandParser.parse(commandLine);
+                Optional<Command> command = CommandFactory.getCommand(commandType, commandLine, messageRepository, connectionRepository);
 
                 if(command.isPresent()) {
                     command.get().execute();

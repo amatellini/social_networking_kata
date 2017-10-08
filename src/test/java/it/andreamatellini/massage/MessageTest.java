@@ -3,7 +3,7 @@ package it.andreamatellini.massage;
 import it.andreamatellini.message.Message;
 import org.junit.Test;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class MessageTest {
 
     private static final String USER = "user";
-    private static final Date POST_DATE = new Date();
+    private static final LocalDateTime POST_DATE = LocalDateTime.now();
     private static final String MESSAGE = "the message";
     private Message message = new Message(USER, POST_DATE, MESSAGE);
 

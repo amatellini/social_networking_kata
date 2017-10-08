@@ -1,31 +1,44 @@
 package it.andreamatellini.commands;
 
+import it.andreamatellini.repository.ConnectionRepository;
+import it.andreamatellini.repository.MessageRepository;
+
+import java.util.Optional;
+
 public class CommandFactory {
-    public static Command getCommand(String type, String command) {
+    public static Optional<Command> getCommand(String type, String command, MessageRepository messageRepository, ConnectionRepository connectionRepository) {
         if(type == null){
             return null;
         }
 
-        //TODO estrarre i parametri dalla linea di comando
-        String user = "";
-        String param = "";
+        String user;
+        String param;
 
         if(type.equals(CommandType.EXIT)) {
-            return new ExitCommand();
+            return Optional.of(new ExitCommand());
         }
         else if(type.equals(CommandType.WALL)) {
-            return new WallCommand(user);
+            String[] ret = command.split("wall");
+            user = ret[0].trim();
+            return Optional.of(new WallCommand(user, messageRepository, connectionRepository));
         }
         else if(type.equals(CommandType.FOLLOW)) {
-            return new FollowCommand(user, param);
+            String[] ret = command.split("follow");
+            user = ret[0].trim();
+            param = ret[1].trim();
+            return Optional.of(new FollowCommand(user, param, connectionRepository));
         }
         else if(type.equals(CommandType.POST)) {
-            return new PostCommand(user, param);
+            String[] ret = command.split("->");
+            user = ret[0].trim();
+            param = ret[1].trim();
+            return Optional.of(new PostCommand(user, param, messageRepository));
         }
         else if(type.equals(CommandType.READ)) {
-            return new ReadCommand(user);
+            user = command.trim();
+            return Optional.of(new ReadCommand(user, messageRepository));
         }
 
-        return null;
+        return Optional.empty();
     }
 }

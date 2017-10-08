@@ -1,13 +1,13 @@
 package it.andreamatellini.message;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Message {
     private String user;
-    private Date postDate;
+    private LocalDateTime postDate;
     private String message;
 
-    public Message(String user, Date postDate, String message) {
+    public Message(String user, LocalDateTime postDate, String message) {
         this.user = user;
         this.postDate = postDate;
         this.message = message;
@@ -17,7 +17,7 @@ public class Message {
         return user;
     }
 
-    public Date getMessageDate() {
+    public LocalDateTime getMessageDate() {
         return postDate;
     }
 
