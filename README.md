@@ -55,4 +55,5 @@ Implement a console-based social networking application (similar to Twitter) sat
 You need Java 8 and Maven
 
 mvn clean package
+
 java -jar target/social-networking-kata-1.0-SNAPSHOT.jar
