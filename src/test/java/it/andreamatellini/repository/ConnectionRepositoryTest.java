@@ -21,14 +21,12 @@ public class ConnectionRepositoryTest {
     }
 
     @Test
-    public void followUserShouldAddTheUserToMyUserList() {
+    public void followUserShouldAddTheUserToMyConnectionList() {
         connectionRepository.followUser(USER, USER_TO_FOLLOW);
 
-        Set<String> userIMFollowing = connectionRepository.getUsersIMFollowing(USER);
+        Set<String> userIMFollowing = connectionRepository.getUsersFollowedBy(USER);
         assertThat(userIMFollowing, is(not(nullValue())));
         assertThat(userIMFollowing, hasSize(1));
         assertThat(userIMFollowing, contains(USER_TO_FOLLOW));
     }
-
-
 }

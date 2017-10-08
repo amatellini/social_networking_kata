@@ -27,7 +27,7 @@ public class LoopManager {
                 Optional<Command> command = CommandParser.parse(line);
 
                 if(command.isPresent()) {
-                    command.get().execute(line);
+                    command.get().execute();
                 }
 
                 output.print("> ");

@@ -23,7 +23,7 @@ public class ConnectionRepository {
 
     }
 
-    public Set<String> getUsersIMFollowing(String user) {
+    public Set<String> getUsersFollowedBy(String user) {
         Set<String> following;
         if(connectionsRepository.get(user) == null) {
             following = new HashSet<>();

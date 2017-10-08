@@ -1,12 +1,12 @@
 package it.andreamatellini.commands;
 
-public class FollowCommand implements Command{
+public class PostCommand implements Command{
 
     private String user;
-    private String userToFollow;
-    public FollowCommand(String user, String userToFollow) {
+    private String message;
+    public PostCommand(String user, String message) {
         this.user = user;
-        this.userToFollow = userToFollow;
+        this.message = message;
     }
 
     @Override
