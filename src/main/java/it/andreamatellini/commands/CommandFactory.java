@@ -22,7 +22,7 @@ public class CommandFactory {
             user = ret[0].trim();
             return Optional.of(new WallCommand(user, messageRepository, connectionRepository));
         }
-        else if(type.equals(CommandType.FOLLOW)) {
+        else if(type.equals(CommandType.FOLLOWS)) {
             String[] ret = command.split("follows");
             user = ret[0].trim();
             param = ret[1].trim();

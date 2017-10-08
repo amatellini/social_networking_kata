@@ -19,7 +19,7 @@ public class CommandParser {
     static {
         commandMatchers.put(EXIT_COMMAND, CommandType.EXIT);
         commandMatchers.put(WALL_COMMAND, CommandType.WALL);
-        commandMatchers.put(FOLLOW_COMMAND, CommandType.FOLLOW);
+        commandMatchers.put(FOLLOW_COMMAND, CommandType.FOLLOWS);
         commandMatchers.put(POST_COMMAND, CommandType.POST);
         commandMatchers.put(READ_COMMAND, CommandType.READ);
     }

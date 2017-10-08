@@ -45,7 +45,7 @@ public class CommandFactoryTest {
 
     @Test
     public void createCommandWithTypeFOLLOWShouldReturnAFollowCommand() {
-        Optional<Command> followCommand = CommandFactory.createCommand(CommandType.FOLLOW, FOLLOW_COMMAND, messageRepository, connectionRepository);
+        Optional<Command> followCommand = CommandFactory.createCommand(CommandType.FOLLOWS, FOLLOW_COMMAND, messageRepository, connectionRepository);
         assertThat(followCommand.isPresent(), is(true));
         assertThat(followCommand.get(), is(instanceOf(FollowCommand.class)));
     }

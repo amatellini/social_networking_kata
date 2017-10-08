@@ -32,7 +32,7 @@ public class CommandParserTest {
     public void parseAFollowCommandShouldReturnATypeFOLLOW() throws Exception {
         String commandType = CommandParser.parse(FOLLOW_COMMAND);
         assertThat(commandType, is(not(nullValue())));
-        assertThat(commandType, is(CommandType.FOLLOW));
+        assertThat(commandType, is(CommandType.FOLLOWS));
     }
 
     @Test
