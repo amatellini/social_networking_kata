@@ -12,7 +12,9 @@ public class CommandParser {
     private static String POST_COMMAND = ".*\\s->\\s.*";
     private static String READ_COMMAND = ".*";
 
-    private static HashMap<String, String> commandMatchers = new HashMap<>();
+    //LinkedHashMap preserve the insertion order.
+    //I need that because the READ_COMMAND is a "catch all" matcher.
+    private static HashMap<String, String> commandMatchers = new LinkedHashMap<>();
 
     static {
         commandMatchers.put(EXIT_COMMAND, CommandType.EXIT);

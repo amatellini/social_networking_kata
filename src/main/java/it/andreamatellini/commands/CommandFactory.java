@@ -6,7 +6,7 @@ import it.andreamatellini.repository.MessageRepository;
 import java.util.Optional;
 
 public class CommandFactory {
-    public static Optional<Command> getCommand(String type, String command, MessageRepository messageRepository, ConnectionRepository connectionRepository) {
+    public static Optional<Command> createCommand(String type, String command, MessageRepository messageRepository, ConnectionRepository connectionRepository) {
         if(type == null){
             return null;
         }

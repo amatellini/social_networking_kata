@@ -31,7 +31,7 @@ public class LoopManager {
             while(true){
                 String commandLine = bufferedReader.readLine();
                 String commandType = CommandParser.parse(commandLine);
-                Optional<Command> command = CommandFactory.getCommand(commandType, commandLine, messageRepository, connectionRepository);
+                Optional<Command> command = CommandFactory.createCommand(commandType, commandLine, messageRepository, connectionRepository);
 
                 if(command.isPresent()) {
                     command.get().execute();
