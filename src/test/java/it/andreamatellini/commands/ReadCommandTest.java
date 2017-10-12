@@ -1,17 +1,16 @@
 package it.andreamatellini.commands;
 
+import it.andreamatellini.message.Message;
 import it.andreamatellini.repository.MessageRepository;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThat;
 
 public class ReadCommandTest {
 
@@ -31,10 +30,14 @@ public class ReadCommandTest {
     @Test
     public void executeShouldPrintAllTheMessagePostedByAUser() throws Exception {
         new PostCommand(USER, MESSAGE, messageRepository).execute();
-        new ReadCommand(USER, messageRepository).execute();
+        List<Message> output = new ReadCommand(USER, messageRepository).execute();
 
-        String actualOutput = outContent.toString("UTF-8");
-        assertThat(actualOutput, containsString(USER));
-        assertThat(actualOutput, containsString(MESSAGE));
+        assertThat(output, is(notNullValue()));
+        assertThat(output, hasSize(1));
+
+        Message message = output.get(0);
+
+        assertThat(message.getUser(), is(USER));
+        assertThat(message.getMessage(), is(MESSAGE));
     }
 }

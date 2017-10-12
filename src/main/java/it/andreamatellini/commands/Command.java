@@ -1,5 +1,9 @@
 package it.andreamatellini.commands;
 
+import it.andreamatellini.message.Message;
+
+import java.util.List;
+
 public interface Command {
-    void execute();
+    List<Message> execute();
 }

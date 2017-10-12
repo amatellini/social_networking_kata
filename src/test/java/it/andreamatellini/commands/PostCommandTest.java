@@ -1,17 +1,14 @@
 package it.andreamatellini.commands;
 
 import it.andreamatellini.message.Message;
-import it.andreamatellini.repository.ConnectionRepository;
 import it.andreamatellini.repository.MessageRepository;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 public class PostCommandTest {
 

@@ -4,6 +4,8 @@ import it.andreamatellini.message.Message;
 import it.andreamatellini.repository.MessageRepository;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
 
 public class PostCommand implements Command{
 
@@ -17,7 +19,8 @@ public class PostCommand implements Command{
     }
 
     @Override
-    public void execute() {
+    public List<Message> execute() {
         messageRepository.addMessage(user, new Message(user, LocalDateTime.now(), message));
+        return Collections.emptyList();
     }
 }
